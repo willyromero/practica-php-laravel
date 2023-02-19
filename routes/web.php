@@ -13,6 +13,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+use App\Http\Controllers\UserController;
+
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/users_crud', [UserController::class, "index"])->name('users.list');
+Route::get('/users_crud/store', [UserController::class, 'storeRedirect'])->name('users.new');
+Route::post('/users_crud', [UserController::class, "store"])->name('users.store');
